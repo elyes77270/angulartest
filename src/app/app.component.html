@@ -1,3 +1,8 @@
 <div class="container">
-  <app-formulaire></app-formulaire>
+  <div class="form-group mt-2">
+    <button  [routerLink]="['/user']" routerLinkActive="router-link-active" class="btn btn-primary">Formulaire</button>
+    <button  [routerLink]="['/view-user']"  class="btn btn-primary">Données</button>
+  </div>
 </div>
+
+<router-outlet></router-outlet>

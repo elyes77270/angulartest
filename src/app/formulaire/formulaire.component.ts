@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { User } from './user';
 
 @Component({
@@ -11,20 +10,25 @@ export class FormulaireComponent implements OnInit {
 
   public user: User = new User();
 
+  lstUser = [] as any;
+
+  oldUserLst = [];
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.oldUserLst = JSON.parse(localStorage.getItem('user') || '{}');
+    console.log(this.oldUserLst);
   }
 
-  public saveData(formulaireForm: NgForm){
-    console.log(formulaireForm.form);
-    const jsonData = JSON.stringify(formulaireForm.value);
-    localStorage.setItem('myData', jsonData);
-    console.log(jsonData);
-  }
-
-  public getData() {
-    return localStorage.getItem('myData')
+  onSave(){
+    if(this.user){
+      this.lstUser = this.oldUserLst;
+      this.lstUser.push(this.user)
+      localStorage.setItem('user',JSON.stringify(this.lstUser));
+      console.log(this.user);
+      this.user = new User;
+    }
   }
 
 }

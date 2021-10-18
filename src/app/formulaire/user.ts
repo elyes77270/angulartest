@@ -1,6 +1,6 @@
 export class User {
 
-    public firstName: string | undefined;
+    public firstName!: string;
 
     public lastName!: string;
 
