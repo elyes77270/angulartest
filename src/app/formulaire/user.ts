@@ -6,4 +6,6 @@ export class User {
 
     public telephone!: string;
 
+    public regions!: string;
+
 }

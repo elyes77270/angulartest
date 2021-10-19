@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
+import {RegionsService} from "./regions.service";
 
 @Component({
   selector: 'app-formulaire',
@@ -14,11 +15,16 @@ export class FormulaireComponent implements OnInit {
 
   oldUserLst = [];
 
-  constructor() { }
+  constructor(private postData:RegionsService) { }
+
+  data:any;
 
   ngOnInit() {
     this.oldUserLst = JSON.parse(localStorage.getItem('user') || '{}');
     console.log(this.oldUserLst);
+    this.postData.getRegions().subscribe((result)=>{
+      this.data=result;
+    })
   }
 
   onSave(){
@@ -30,5 +36,6 @@ export class FormulaireComponent implements OnInit {
       this.user = new User;
     }
   }
+
 
 }

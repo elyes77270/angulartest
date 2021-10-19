@@ -20,6 +20,12 @@
                                 <label>Téléphone</label>
                                 <input type="tel" class="form-control" placeholder="Téléphone" [(ngModel)]="user.telephone" name="telephone" required>
                             </div>
+                            <div class="form-group">
+                                <label>Régions</label>
+                                <select class="form-select" [(ngModel)]="user.regions" name="regions" aria-label="Regions">
+                                    <option *ngFor="let item of data" value="{{item.nom}}">{{item.nom}}</option>
+                                </select>
+                            </div>
                         </div>
                         <button class="btn btn-info" type="submit">
                             Sauvegarder

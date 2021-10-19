@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {RegionsService} from "./regions.service";
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angulartest';
+  title = 'User';
+
+  data:any;
+  constructor(private postData:RegionsService){}
+  ngOnInit()
+  {
+    this.postData.getRegions().subscribe((result)=>{
+      this.data=result;
+    })
+  }
 }
