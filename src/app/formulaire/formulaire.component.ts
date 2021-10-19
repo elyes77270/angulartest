@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import {RegionsService} from "./regions.service";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulaire',
@@ -10,6 +11,13 @@ import {RegionsService} from "./regions.service";
 export class FormulaireComponent implements OnInit {
 
   public user: User = new User();
+
+  loginForm= new FormGroup({
+    lastName: new FormControl('', Validators.required),
+    firstName: new FormControl('', Validators.required),
+    telephone: new FormControl('', Validators.required),
+    regions: new FormControl('', Validators.required)
+  })
 
   lstUser = [] as any;
 
@@ -36,6 +44,5 @@ export class FormulaireComponent implements OnInit {
       this.user = new User;
     }
   }
-
 
 }

@@ -20,7 +20,6 @@ export class ViewUserComponent implements OnInit {
     let results = this.lstUser.slice(id);
     localStorage.setItem('user',JSON.stringify(this.lstUser));
     this.lstUser = results;
-    
   }
 
 }
